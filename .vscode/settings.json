@@ -1,0 +1,36 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock, .stylelintrc, .stylelintignore, .eslintrc, .eslintignore, .prettierrc, .prettierrc.json, .prettierignore, .eslintrc.json",
+  },
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "editor.formatOnSave": true,
+
+  "stylelint.useLocal": true,
+  "stylelint.autoFixOnSave": true,
+
+  "cSpell.language": "en,ru",
+
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "white",
+      "border": "1px solid white",
+      "backgroundColor": "orange"
+    },
+    {
+      "text": "NOTE:",
+      "color": "white",
+      "border": "1px solid white",
+      "backgroundColor": "purple"
+    },
+    {
+      "text": "BUG:",
+      "color": "white",
+      "border": "1px solid white",
+      "backgroundColor": "red"
+    }
+  ],
+}
