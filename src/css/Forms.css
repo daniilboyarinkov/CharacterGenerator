@@ -1,0 +1,257 @@
+.StepForm {
+  position: absolute;
+
+  width: 90vw;
+  min-height: 80vh;
+  margin-top: 1rem;
+  padding: 1rem;
+
+  color: var(--font-main);
+  text-align: center;
+
+  background-color: var(--background-secondary);
+  border: 3px solid var(--prior);
+  border-radius: 24px;
+}
+
+@media (max-width: 720px) {
+  .StepForm {
+    width: 98vw;
+  }
+}
+
+.FormNav {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.FormNav > button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+
+  font-weight: bold;
+  color: var(--font-main);
+
+  background-color: var(--background-els);
+  border: 2px solid var(--background-els);
+  border-radius: 6px;
+  outline: none;
+}
+
+.FormNav > button:focus {
+  border: 2px solid darkviolet;
+}
+
+.FormNav > button:hover {
+  background-color: var(--active-els);
+}
+
+.FormNav > button:active {
+  background-color: var(--background-main);
+}
+
+.FormNav > button:last-child {
+  width: 40%;
+  min-width: 350px;
+  height: 60px;
+  margin-left: 12px;
+
+  font-size: 1.1rem;
+}
+
+.FormNav > button:first-child {
+  width: 60px;
+  height: 60px;
+}
+
+@media screen and (max-width: 720px) {
+  .FormNav > button:last-child {
+    width: 50%;
+    min-width: 200px;
+    height: 50px;
+    margin-left: 6px;
+
+    font-size: 1rem;
+  }
+
+  .FormNav > button:first-child {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.FormTextContent {
+  height: 80%;
+  padding: 1rem;
+
+  text-align: left;
+}
+
+.FormTextContent > p {
+  margin-top: 1rem;
+
+  letter-spacing: 1px;
+
+  opacity: 0.6;
+}
+
+.FormTextContent > p:last-child {
+  margin-bottom: 62px;
+}
+
+.FormStepContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2fr 1fr;
+  gap: 24px;
+
+  height: 80%;
+  padding: 2rem;
+}
+
+.ResultField {
+  position: relative;
+
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 200px;
+
+  font-size: large;
+  color: var(--font-main);
+  text-align: center;
+
+  background-color: var(--text-fields);
+  border-radius: 12px;
+}
+
+.ResultField > .QuestionIcon {
+  cursor: pointer;
+
+  position: absolute;
+  top: -14px;
+  right: -14px;
+
+  padding: 12px;
+
+  color: #717272;
+
+  background-color: #f2f3f4;
+  border: 2px solid #f2f3f4;
+  border-radius: 50%;
+  outline: none;
+}
+
+.ResultField > .QuestionIcon:focus {
+  border: 2px solid darkviolet;
+}
+
+.ResultField > .QuestionIcon:hover {
+  background-color: #efefef;
+}
+
+.ResultField > .QuestionIcon:active {
+  background-color: #fff;
+}
+
+.GenerateBtn {
+  cursor: pointer;
+
+  position: relative;
+
+  grid-column: 2/2;
+  grid-row: 2/2;
+  justify-self: end;
+
+  width: 80%;
+  min-height: 75px;
+
+  font-size: large;
+  font-weight: bold;
+  color: var(--font-main);
+
+  background-color: var(--text-fields);
+  border: 2px solid var(--text-fields);
+  border-radius: 12px;
+  outline: none;
+}
+
+.GenerateBtn:focus {
+  border: 2px solid darkviolet;
+}
+
+.GenerateBtn:hover {
+  background-color: var(--active-els);
+}
+
+.GenerateBtn:active {
+  background-color: var(--background-main);
+}
+
+.GenerateBtn > .ShuffleIcon {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+
+  padding: 6px;
+
+  background-color: var(--background-els);
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 720px) {
+  .FormStepContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+
+    padding: 0.5rem;
+  }
+
+  .GenerateBtn {
+    grid-column: 1/1;
+    grid-row: 2/2;
+
+    width: 100%;
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .FormStepContent {
+    padding: 0.5rem;
+  }
+
+  .GenerateBtn {
+    width: 100%;
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .FormTextContent {
+    padding: 0.1rem;
+
+    font-size: 0.9rem;
+  }
+}
+
+.FormResultContent {
+  height: 80%;
+  padding: 1rem;
+}

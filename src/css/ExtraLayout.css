@@ -1,0 +1,92 @@
+.ExtraLayout {
+  position: fixed;
+  z-index: 1001;
+  top: 2%;
+  right: 2%;
+
+  display: flex;
+
+  background-color: var(--active-els);
+  border-radius: 12px;
+
+  transition: all 0.5s ease;
+}
+
+.ExtraLayout-desktop {
+  flex-direction: row;
+
+  padding: 0.5rem 1rem;
+}
+
+.ExtraLayout-mobile {
+  flex-direction: column;
+
+  padding: 0.25rem 0.4rem;
+}
+
+.ChooseLangPopup {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--background-secondary);
+  border-radius: 12px;
+}
+
+.ChooseLangPopup-vertical {
+  flex-direction: column;
+}
+
+.ChooseLangPopup-horizontal {
+  flex-direction: row;
+}
+
+.ExtraLayout > button {
+  cursor: pointer;
+
+  margin: 6px;
+  padding: 4px;
+
+  background-color: var(--background-secondary);
+  border: 2px solid var(--background-secondary);
+  border-radius: 4px;
+  outline: none;
+}
+
+.ExtraLayout-mobile > button {
+  padding: 6px;
+}
+
+.ExtraLayout .active {
+  border: 2px solid var(--font-main);
+
+  scale: 1.1;
+}
+
+.ChooseLangPopup > button {
+  cursor: pointer;
+
+  margin: 6px;
+  padding: 6px;
+
+  font-weight: bold;
+  color: var(--font-main);
+
+  background-color: var(--background-main);
+  border: 2px solid var(--background-main);
+  border-radius: 4px;
+  outline: none;
+}
+
+.ChooseLangPopup > button:focus {
+  border: 2px solid darkviolet;
+}
+
+.ExtraLayout > button:focus {
+  border: 2px solid darkviolet;
+}
+
+.ChooseLangPopup > button:hover {
+  border: 2px solid var(--active-els);
+}

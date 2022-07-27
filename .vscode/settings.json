@@ -1,7 +1,7 @@
 {
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "package.json": "package-lock.json, yarn.lock, .stylelintrc, .stylelintignore, .eslintrc, .eslintignore, .prettierrc, .prettierrc.json, .prettierignore, .eslintrc.json",
+    "package.json": "package-lock.json, yarn.lock, .stylelintrc, .stylelintignore, .eslintrc, .eslintignore, .prettierrc, .prettierrc.json, .prettierignore, .eslintrc.json"
   },
 
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -11,7 +11,7 @@
   "stylelint.useLocal": true,
   "stylelint.autoFixOnSave": true,
 
-  "cSpell.language": "en,ru",
+  "cSpell.language": "en,ru,fr",
 
   "todohighlight.keywords": [
     {
@@ -33,4 +33,7 @@
       "backgroundColor": "red"
     }
   ],
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  }
 }
