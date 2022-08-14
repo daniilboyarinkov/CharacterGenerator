@@ -2,5 +2,7 @@
   "submit": "soumettre",
   "save": "sauver",
   "result": "résultat",
-  "generate": "produire"
+  "generate": "produire",
+  "random": "aléatoire",
+  "custom": "douane"
 }

@@ -1,0 +1,19 @@
+{
+  "titles": {
+    "sex": "génère le sexe de ton personnage",
+    "race": "Maintenant faisons la course",
+    "skinColor": "c'est l'heure de la couleur de peau",
+    "eyeColor": "maintenant la couleur des yeux",
+    "eyeType": "à quoi ressembleront les yeux ?",
+    "hairLength": "combien de temps mesurent les cheveux ?",
+    "hairType": "sommes-nous coiffeurs maintenant ?",
+    "hairColor": "teignons ses cheveux !",
+    "noseType": "quel nez !",
+    "lipsType": "générer la forme des lèvres",
+    "height": "quelle est la taille de votre personnage",
+    "situation": "créons une situation ?",
+    "peculiarities": "fonctionnalités maintenant !"
+  },
+  "generationPrompt": "générer un nouveau!",
+  "questionPrompt": "proposez votre option"
+}

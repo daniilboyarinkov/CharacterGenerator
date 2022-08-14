@@ -1,0 +1,31 @@
+.Footer {
+  position: absolute;
+  bottom: -50%;
+
+  width: 100vw;
+  min-height: 100px;
+  padding: 2rem;
+
+  color: var(--font-main);
+  text-align: left;
+
+  background-color: rgb(17 17 17 / 40%);
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.FooterHr {
+  position: absolute;
+  bottom: 0;
+
+  width: 80%;
+  width: 80vw;
+  margin: 0 10%;
+
+  border: none;
+  border-bottom: 2px solid #121212;
+}
+
+.Footer > a {
+  color: blueviolet;
+}

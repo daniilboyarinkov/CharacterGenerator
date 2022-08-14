@@ -1,0 +1,19 @@
+{
+  "title": "your Character is generated!",
+  "subtitle": "your Character:",
+  "resultContentKeys": {
+    "skinColor": "Skin Color",
+    "hairLength": "Hair Length",
+    "noseType": "Nose Type",
+    "situation": "Situation",
+    "sex": "Sex",
+    "eyeColor": "Eye Color",
+    "hairType": "Hair Type",
+    "lipsType": "Lips Type",
+    "peculiarities": "Peculiarities",
+    "race": "Race",
+    "eyeType": "Eye Type",
+    "hairColor": "Hair Color",
+    "height": "Height"
+  }
+}

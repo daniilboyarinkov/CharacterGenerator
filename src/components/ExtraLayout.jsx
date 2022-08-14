@@ -1,4 +1,4 @@
-import { useContext, memo, useState, useMemo } from "react"
+import { useContext, memo, useState } from "react"
 import {
   useSpring,
   useTransition,
@@ -13,7 +13,7 @@ import ThemeToggleButton from "./UI/ThemeToggleButton"
 
 import LangContext from "../contexts/LangContext"
 import ThemeContext from "../contexts/ThemeContext"
-import useWindowDimensions from "../hooks/useWindowDimensions"
+import useDevice from "../hooks/useDevice"
 
 import "../css/ExtraLayout.css"
 
@@ -21,25 +21,15 @@ function ExtraLayout() {
   const { theme, setTheme } = useContext(ThemeContext)
   const { lang, setLang } = useContext(LangContext)
   const [langsOpen, setLangsOpen] = useState(false)
-  const { width } = useWindowDimensions()
-
-  const device = useMemo(() => (width < 720 ? "mobile" : "desktop"), [width])
-  const orientation = useMemo(
-    () => (width < 720 ? "vertical" : "horizontal"),
-    [width]
-  )
+  const { isMobile } = useDevice()
 
   const wholeRef = useSpringRef()
   const animationStyles = useSpring({
     ref: wholeRef,
     config: { ...config.stiff, duration: 200 },
     to: {
-      width:
-        // eslint-disable-next-line no-nested-ternary
-        orientation === "horizontal" && (langsOpen ? 280 : 125),
-      height:
-        // eslint-disable-next-line no-nested-ternary
-        orientation === "vertical" && (langsOpen ? 280 : 120),
+      width: !isMobile && (langsOpen ? 280 : 125),
+      height: isMobile && (langsOpen ? 280 : 120),
     },
   })
   const langsRef = useSpringRef()
@@ -47,16 +37,16 @@ function ExtraLayout() {
     config: { ...config.stiff, duration: 600 },
     ref: langsRef,
     from: {
-      width: orientation === "horizontal" && 0,
-      height: orientation === "vertical" && 0,
+      width: !isMobile && 0,
+      height: isMobile && 0,
     },
     enter: {
-      width: orientation === "horizontal" && 200,
-      height: orientation === "vertical" && 200,
+      width: !isMobile && 200,
+      height: isMobile && 200,
     },
     leave: {
-      width: orientation === "horizontal" && 0,
-      height: orientation === "vertical" && 0,
+      width: !isMobile && 0,
+      height: isMobile && 0,
     },
   })
 
@@ -65,14 +55,14 @@ function ExtraLayout() {
   return (
     <animated.div
       style={animationStyles}
-      className={`ExtraLayout ExtraLayout-${device}`}
+      className={`ExtraLayout ExtraLayout-${isMobile ? "mobile" : "desktop"}`}
     >
       <LangTogglePopup
         lang={lang}
         setLang={setLang}
         setOpen={setLangsOpen}
         langsTransition={langsTransition}
-        orientation={orientation}
+        orientation={isMobile ? "vertical" : "horizontal"}
       />
       <ThemeToggleButton theme={theme} setTheme={setTheme} />
     </animated.div>

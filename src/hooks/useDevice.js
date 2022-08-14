@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react"
-
 import useWindowDimensions from "./useWindowDimensions"
 
+/**
+ * checks whether screen size is as mobile or not
+ * @param {number} width screen width number
+ * @returns boolean
+ */
+const checkMobile = (width) => width < 720
+
 export default function useDevice() {
-  const { width } = useWindowDimensions()
-  const [device, setDevice] = useState("pc")
-
-  useEffect(() => {
-    if (width < 720) setDevice("mobile")
-    else setDevice("pc")
-  }, [width])
-
-  return device
+  return { isMobile: checkMobile(useWindowDimensions().width) }
 }

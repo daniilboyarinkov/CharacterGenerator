@@ -1,0 +1,19 @@
+{
+  "titles": {
+    "sex": "generating sex of your character",
+    "race": "lets generate race",
+    "skinColor": "time for skinColor",
+    "eyeColor": "now eye color",
+    "eyeType": "what is for eye type?",
+    "hairLength": "how long is the hair?",
+    "hairType": "are we hairdressers now?",
+    "hairColor": "lets dye it!",
+    "noseType": "what a nose!",
+    "lipsType": "generating lips type",
+    "height": "how tall is your character?",
+    "situation": "generate a situation?",
+    "peculiarities": "now peculiarities!"
+  },
+  "generationPrompt": "generate a new one!",
+  "questionPrompt": "suggest your option"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "votre Personnage est généré!",
+  "subtitle": "votre Personnage:",
+  "resultContentKeys": {
+    "skinColor": "Couleur de peau",
+    "hairLength": "Longueur des cheveux",
+    "noseType": "Type de nez",
+    "situation": "Situation",
+    "sexe": "Sexe",
+    "eyeColor": "Couleur des yeux",
+    "hairType": "Type de cheveux",
+    "lipsType": "Type de lèvres",
+    "particularités": "Participalités",
+    "course": "Course",
+    "eyeType": "Type d'oeil",
+    "hairColor": "Couleur des cheveux",
+    "hauteur": "Hauteur"
+  }
+}

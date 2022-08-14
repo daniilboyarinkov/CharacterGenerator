@@ -1,39 +1,43 @@
 import { useContext, memo } from "react"
+import { useTransition, animated } from "react-spring"
 
 import ExtraLayout from "./ExtraLayout"
 
+import LangElFactory from "../config/LangElFactory"
 import LangContext from "../contexts/LangContext"
 
 import useDevice from "../hooks/useDevice"
-import HelloTextEn from "../texts/en/Hello_text"
-import HelloTextFr from "../texts/fr/Hello_text"
-import HelloTextRu from "../texts/ru/Hello_text"
 
 import "../css/Header.css"
 
 function Header() {
   const { lang } = useContext(LangContext)
-  const device = useDevice()
+  const { isMobile } = useDevice()
 
-  return (
-    <>
+  const transitions = useTransition(true, {
+    from: { y: -110, x: -110 },
+    enter: { y: 0, x: 0 },
+    leave: { y: -110, x: -110 },
+  })
+
+  return transitions((styles) => (
+    <div>
       <div className="Header">
-        <img
+        <animated.img
+          style={styles}
           draggable={false}
-          width={device === "pc" ? 75 : 50}
+          width={isMobile ? 50 : 75}
           src="/CharacterGenerator/svg/icon.svg"
           alt=""
         />
-        <h1>
-          {(lang === "fr" && HelloTextFr) ||
-            (lang === "ru" && HelloTextRu) ||
-            HelloTextEn}
-        </h1>
+        <animated.h1 style={styles}>
+          {LangElFactory(lang, "HelloText")}
+        </animated.h1>
         <ExtraLayout />
       </div>
-      <hr className="HeaderHr" />
-    </>
-  )
+      <animated.hr style={styles} className="HeaderHr" />
+    </div>
+  ))
 }
 
 export default memo(Header)

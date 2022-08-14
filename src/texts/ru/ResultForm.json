@@ -1,0 +1,19 @@
+{
+  "title": "ваш Персонаж готов!",
+  "subtitle": "ваш Персонаж:",
+  "resultContentKeys": {
+    "skinColor": "Цвет Кожи",
+    "hairLength": "Длина Волос",
+    "noseType": "Форма Носа",
+    "situation": "Ситуация",
+    "sex": "Пол",
+    "eyeColor": "Цвет Глаз",
+    "hairType": "Прическа",
+    "lipsType": "Форма рта",
+    "peculiarities": "Особенности",
+    "race": "Раса",
+    "eyeType": "Тип Глаз",
+    "hairColor": "Цвет волос",
+    "height": "Рост"
+  }
+}

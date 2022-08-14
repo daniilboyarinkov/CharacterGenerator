@@ -1,13 +1,12 @@
 import { func, string } from "prop-types"
 import { useContext, useEffect } from "react"
 
+import LangElFactory from "../../config/LangElFactory"
 import LangContext from "../../contexts/LangContext"
 import capitalize from "../../helpers/StringCapitalize"
 import useKeyPress from "../../hooks/useKeyPress"
-import frUIelements from "../../texts/fr/UIelemenets.json"
-import ruUIelements from "../../texts/ru/UIelemenets.json"
 
-function GreetingForm({ title, content, submitAction }) {
+function GreetingForm({ title, content, submitAction, generateAll }) {
   const [pressedKey, clearPressedKey] = useKeyPress()
   const { lang } = useContext(LangContext)
 
@@ -27,11 +26,12 @@ function GreetingForm({ title, content, submitAction }) {
           <p key={`GreetingFormP-${index}`}>{text}</p>
         ))}
       </div>
-      <div className="FormNav">
+      <div className="FormNav GFormNav">
+        <button type="button" onClick={generateAll}>
+          {capitalize(LangElFactory(lang, "UI")("random"))}
+        </button>
         <button type="button" onClick={submitAction}>
-          {(lang === "fr" && capitalize(frUIelements.submit)) ||
-            (lang === "ru" && capitalize(ruUIelements.submit)) ||
-            "Submit"}
+          {capitalize(LangElFactory(lang, "UI")("custom"))}
         </button>
       </div>
     </>
@@ -42,6 +42,7 @@ GreetingForm.propTypes = {
   title: string.isRequired,
   content: string.isRequired,
   submitAction: func.isRequired,
+  generateAll: func.isRequired,
 }
 
 export default GreetingForm
