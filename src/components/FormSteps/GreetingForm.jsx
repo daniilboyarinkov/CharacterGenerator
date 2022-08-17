@@ -26,7 +26,10 @@ function GreetingForm({ title, content, submitAction, generateAll }) {
           <p key={`GreetingFormP-${index}`}>{text}</p>
         ))}
       </div>
-      <div className="FormNav GFormNav">
+      <div
+        className="FormNav GFormNav"
+        style={{ position: "relative", marginTop: 24 }}
+      >
         <button type="button" onClick={generateAll}>
           {capitalize(LangElFactory(lang, "UI")("random"))}
         </button>

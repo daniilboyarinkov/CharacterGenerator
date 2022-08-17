@@ -1,5 +1,7 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from "react"
-import { useTransition, animated, config } from "react-spring"
+import { animated } from "react-spring"
+
+import StepSlideAnimation from "../animations/StepSlide.animation"
 
 import { CarouselQueue, QueueLength } from "../config/CarouselQueue"
 import LangContext from "../contexts/LangContext"
@@ -34,19 +36,6 @@ function Carousel() {
     setRenderItem(CarouselQueue(lang, nextPage, prevPage, lastPage)[step])
   }, [step, lang, nextPage, prevPage, lastPage])
 
-  const transitions = useTransition(renderItem, {
-    config: { duration: 400, ...config.gentle },
-    from: {
-      x: forward ? "120%" : "-120%",
-      transform: "translate3d(0, -60px, 0)",
-    },
-    enter: { x: "0", transform: "translate3d(0, 0px, 0)" },
-    leave: {
-      x: forward ? "-120%" : "120%",
-      transform: "translate3d(0, -60px, 0)",
-    },
-  })
-
   const StepContextValue = useMemo(
     () => ({
       current: step,
@@ -58,7 +47,10 @@ function Carousel() {
   return (
     <StepContext.Provider value={StepContextValue}>
       <div className="Carousel">
-        {transitions((styles, item) => (
+        {StepSlideAnimation(
+          renderItem,
+          forward
+        )((styles, item) => (
           <animated.div className="StepForm" key={step} style={styles}>
             {item}
           </animated.div>

@@ -1,0 +1,148 @@
+.ContactForm {
+  position: absolute;
+  z-index: 10000;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  min-width: fit-content;
+  padding: 1rem 5rem 2rem;
+
+  color: var(--font-main);
+
+  background-color: var(--background-popup);
+  border-radius: 24px;
+}
+
+.ContactForm > h4 {
+  margin-bottom: 24px;
+}
+
+.ContactForm input[type="text"] {
+  width: 100%;
+  margin: 4px;
+  padding: 6px;
+
+  border: 2px solid var(--background-popup);
+  border-radius: 6px;
+  outline: none;
+}
+
+.ContactForm input[id="name"] {
+  margin-left: 0;
+}
+
+.ContactForm input[type="text"]:focus {
+  border: 2px solid darkviolet;
+}
+
+.ContactForm input[id="step"] {
+  pointer-events: none;
+
+  width: 80%;
+
+  font-weight: bold;
+  color: white;
+  text-align: center;
+
+  background-color: gray;
+}
+
+.ContactForm textarea {
+  width: 80%;
+  padding: 6px;
+
+  border: 2px solid var(--background-popup);
+  border-radius: 6px;
+  outline: none;
+}
+
+.ContactForm textarea:focus {
+  border: 2px solid darkviolet;
+}
+
+.ContactNote {
+  margin-bottom: 12px;
+
+  font-size: small;
+  font-weight: 300;
+
+  opacity: 0.3;
+}
+
+.ContactForm > button[type="submit"] {
+  cursor: pointer;
+
+  margin-top: 24px;
+  padding: 8px 12px;
+
+  font-weight: bold;
+  color: var(--font-main);
+
+  background-color: var(--popup-els);
+  border: 2px solid var(--background-popup);
+  border-radius: 6px;
+  outline: none;
+}
+
+.ContactForm > button[type="submit"]:disabled {
+  cursor: auto;
+
+  color: lightgray;
+
+  background-color: gray;
+}
+
+.ContactForm > button[type="submit"]:focus {
+  border: 2px solid darkviolet;
+}
+
+.ContactCross {
+  cursor: pointer;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin: 6px;
+  padding: 6px;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.Shadow {
+  position: fixed;
+  z-index: 1000;
+  top: -100%;
+  left: -100%;
+
+  width: 200vw;
+  height: 200vh;
+
+  opacity: 0.8;
+  background-color: #000;
+}
+
+.Row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media screen and (max-width: 720px) {
+  .Row {
+    flex-direction: column;
+  }
+
+  .ContactForm {
+    padding: 1rem 2rem;
+  }
+
+  .ContactForm input[id="step"],
+  .ContactForm textarea,
+  .ContactForm > button[type="submit"] {
+    width: 100%;
+  }
+}

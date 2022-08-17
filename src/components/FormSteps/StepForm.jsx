@@ -2,15 +2,10 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import QuestionMarkRoundedIcon from "@mui/icons-material/QuestionMarkRounded"
 import ShuffleRoundedIcon from "@mui/icons-material/ShuffleRounded"
 import { bool, func, string, object } from "prop-types"
-import {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-  memo,
-} from "react"
-import { useTransition, animated } from "react-spring"
+import { useCallback, useContext, useRef, useState, memo } from "react"
+import { animated } from "react-spring"
+
+import FadeSlideAnimation from "../../animations/FadeSlide.animation"
 
 import LangElFactory from "../../config/LangElFactory"
 import LangRFFactory from "../../config/LangRFFactory"
@@ -21,14 +16,22 @@ import LangContext from "../../contexts/LangContext"
 import "../../css/Forms.css"
 import capitalize from "../../helpers/StringCapitalize"
 import useHover from "../../hooks/useHover"
-import useKeyPress from "../../hooks/useKeyPress"
+// import useKeyPress from "../../hooks/useKeyPress"
 import ColorCircle from "../ColorCircle"
+import ContactForm from "../ContactForm"
 import Prompt from "../Prompt"
 import StepCircle from "../StepCircle"
 
 function StepForm({ step, title, submitAction, returnAction }) {
-  const [pressedKey, clearPressedKey] = useKeyPress()
-  const { lang } = useContext(LangContext)
+  const [isContactShown, setContactShown] = useState(false)
+  const ShowContact = useCallback(() => {
+    setContactShown(true)
+  }, [])
+  const closeContact = useCallback(() => {
+    setContactShown(false)
+  }, [])
+
+  // const [pressedKey, clearPressedKey] = useKeyPress()
 
   const user = useContext(CharacterContext)
   const [viewStep, setViewStep] = useState(user[step])
@@ -50,64 +53,46 @@ function StepForm({ step, title, submitAction, returnAction }) {
     }
   }, [user, step])
 
-  useEffect(() => {
-    if (pressedKey === " ") {
-      submitAction()
-      clearPressedKey()
-    } else if (pressedKey === "j") {
-      returnAction()
-      clearPressedKey()
-    } else if (pressedKey === "g") {
-      regenerate()
-      clearPressedKey()
-    }
-  }, [pressedKey, clearPressedKey, returnAction, submitAction, regenerate])
-
-  const transitions = useTransition(viewStep, {
-    from: {
-      opacity: 0,
-      transform: "translate3d(0, -100px, 0)",
-    },
-    enter: {
-      opacity: 1,
-      transform: "translate3d(0, 0px, 0)",
-    },
-    leave: {
-      opacity: 0,
-      transform: "translate3d(0, 100px, 0)",
-    },
-  })
+  // useEffect(() => {
+  //   if (pressedKey === " ") {
+  //     submitAction()
+  //     clearPressedKey()
+  //   } else if (pressedKey === "j") {
+  //     returnAction()
+  //     clearPressedKey()
+  //   } else if (pressedKey === "g") {
+  //     regenerate()
+  //     clearPressedKey()
+  //   }
+  // }, [pressedKey, clearPressedKey, returnAction, submitAction, regenerate])
 
   return (
     <>
+      {isContactShown && <ContactForm close={closeContact} step={step} />}
       <h2>{capitalize(title)}</h2>
       <div className="FormStepContent">
         <ResultField
-          lang={lang}
-          transitions={transitions}
+          viewStep={viewStep}
           step={step}
           isQuestionHovering={isQuestionHovering}
           questionRef={questionRef}
+          ShowContact={ShowContact}
         />
         <GenerationBtn
-          lang={lang}
           regenerate={regenerate}
           isShuffleHovering={isShuffleHovering}
           shuffleRef={shuffleRef}
         />
       </div>
-      <FormNav
-        lang={lang}
-        returnAction={returnAction}
-        submitAction={submitAction}
-      />
+      <FormNav returnAction={returnAction} submitAction={submitAction} />
       <StepCircle />
     </>
   )
 }
 
-const GenerationBtn = memo(
-  ({ lang, regenerate, isShuffleHovering, shuffleRef }) => (
+const GenerationBtn = memo(({ regenerate, isShuffleHovering, shuffleRef }) => {
+  const { lang } = useContext(LangContext)
+  return (
     <button type="button" className="GenerateBtn" onClick={regenerate}>
       {capitalize(LangElFactory(lang, "UI")("generate"))}
       <Prompt
@@ -120,45 +105,55 @@ const GenerationBtn = memo(
       </span>
     </button>
   )
-)
+})
 
 const ResultField = memo(
-  ({ transitions, lang, step, isQuestionHovering, questionRef }) => (
-    <div className="ResultField">
-      {transitions((styles, item) =>
-        step.toLowerCase().includes("color") ? (
-          <ColorCircle color={item} styles={styles} />
-        ) : (
-          <animated.b style={{ position: "absolute", ...styles }}>
-            {capitalize(LangRFFactory(lang, step, item))}
-          </animated.b>
-        )
-      )}
-      <Prompt
-        text={capitalize(LangElFactory(lang, "SF")("questionPrompt"))}
-        show={isQuestionHovering}
-        styles={{ top: "-30%" }}
-      />
-      <button type="button" className="QuestionIcon" ref={questionRef}>
-        <QuestionMarkRoundedIcon fontSize="large" />
+  ({ step, viewStep, isQuestionHovering, questionRef, ShowContact }) => {
+    const { lang } = useContext(LangContext)
+    return (
+      <div className="ResultField">
+        {FadeSlideAnimation(viewStep)((styles, item) =>
+          step.toLowerCase().includes("color") ? (
+            <ColorCircle color={item} styles={styles} />
+          ) : (
+            <animated.b style={{ position: "absolute", ...styles }}>
+              {capitalize(LangRFFactory(lang, step, item))}
+            </animated.b>
+          )
+        )}
+        <Prompt
+          text={capitalize(LangElFactory(lang, "SF")("questionPrompt"))}
+          show={isQuestionHovering}
+          styles={{ top: "-30%" }}
+        />
+        <button
+          type="button"
+          className="QuestionIcon"
+          ref={questionRef}
+          onClick={ShowContact}
+        >
+          <QuestionMarkRoundedIcon fontSize="large" />
+        </button>
+      </div>
+    )
+  }
+)
+
+const FormNav = memo(({ returnAction, submitAction }) => {
+  const { lang } = useContext(LangContext)
+  return (
+    <div className="FormNav">
+      <button type="button" onClick={returnAction} className="Back">
+        <ArrowBackIosNewRoundedIcon />
+      </button>
+      <button type="button" onClick={submitAction} className="Submit">
+        {capitalize(LangElFactory(lang, "UI")("submit"))}
       </button>
     </div>
   )
-)
-
-const FormNav = memo(({ returnAction, submitAction, lang }) => (
-  <div className="FormNav">
-    <button type="button" onClick={returnAction} className="Back">
-      <ArrowBackIosNewRoundedIcon />
-    </button>
-    <button type="button" onClick={submitAction} className="Submit">
-      {capitalize(LangElFactory(lang, "UI")("submit"))}
-    </button>
-  </div>
-))
+})
 
 GenerationBtn.propTypes = {
-  lang: string.isRequired,
   regenerate: func.isRequired,
   isShuffleHovering: bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
@@ -166,8 +161,8 @@ GenerationBtn.propTypes = {
 }
 
 ResultField.propTypes = {
-  lang: string.isRequired,
-  transitions: func.isRequired,
+  viewStep: string.isRequired,
+  ShowContact: func.isRequired,
   step: string.isRequired,
   isQuestionHovering: bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
@@ -177,7 +172,6 @@ ResultField.propTypes = {
 FormNav.propTypes = {
   returnAction: func.isRequired,
   submitAction: func.isRequired,
-  lang: string.isRequired,
 }
 
 StepForm.propTypes = {

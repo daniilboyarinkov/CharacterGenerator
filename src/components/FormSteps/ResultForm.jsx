@@ -1,6 +1,6 @@
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded"
 import { func, string } from "prop-types"
-import { memo, useCallback, useContext, useEffect, useRef } from "react"
+import { memo, useCallback, useContext, useRef } from "react"
 
 import LangElFactory from "../../config/LangElFactory"
 import LangRFFactory from "../../config/LangRFFactory"
@@ -8,12 +8,12 @@ import CharacterContext from "../../contexts/CharacterContext"
 import LangContext from "../../contexts/LangContext"
 import exportAsImage from "../../helpers/ExportComponentAsImg"
 import capitalize from "../../helpers/StringCapitalize"
-import useKeyPress from "../../hooks/useKeyPress"
+// import useKeyPress from "../../hooks/useKeyPress"
 import ColorCircle from "../ColorCircle"
 import ResultField from "../ResultField"
 
 function ResultForm({ title, returnAction }) {
-  const [pressedKey, clearPressedKey] = useKeyPress()
+  // const [pressedKey, clearPressedKey] = useKeyPress()
   const { lang } = useContext(LangContext)
   const user = useContext(CharacterContext)
 
@@ -23,12 +23,12 @@ function ResultForm({ title, returnAction }) {
     exportAsImage(exportRef.current, "Character.png")
   }, [exportRef])
 
-  useEffect(() => {
-    if (pressedKey === " ") {
-      returnAction()
-      clearPressedKey()
-    }
-  }, [pressedKey, clearPressedKey, returnAction])
+  // useEffect(() => {
+  //   if (pressedKey === " ") {
+  //     returnAction()
+  //     clearPressedKey()
+  //   }
+  // }, [pressedKey, clearPressedKey, returnAction])
 
   return (
     <>

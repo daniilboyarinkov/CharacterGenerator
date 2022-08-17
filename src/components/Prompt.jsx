@@ -1,15 +1,12 @@
 import { bool, object, string } from "prop-types"
-import { useTransition, animated } from "react-spring"
+import { animated } from "react-spring"
+
+import FadeAnimation from "../animations/Fade.animation"
 
 import "../css/Prompt.css"
 
 function Prompt({ text, show, styles }) {
-  const transitions = useTransition(show, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  })
-  return transitions(
+  return FadeAnimation(show)(
     (animStyles, item) =>
       item && (
         <animated.div style={{ ...animStyles, ...styles }} className="Prompt">

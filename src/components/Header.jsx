@@ -1,8 +1,9 @@
 import { useContext, memo } from "react"
-import { useTransition, animated } from "react-spring"
+import { animated } from "react-spring"
 
 import ExtraLayout from "./ExtraLayout"
 
+import HeaderSlideInAnimation from "../animations/HeaderSlideIn.animation"
 import LangElFactory from "../config/LangElFactory"
 import LangContext from "../contexts/LangContext"
 
@@ -14,13 +15,7 @@ function Header() {
   const { lang } = useContext(LangContext)
   const { isMobile } = useDevice()
 
-  const transitions = useTransition(true, {
-    from: { y: -110, x: -110 },
-    enter: { y: 0, x: 0 },
-    leave: { y: -110, x: -110 },
-  })
-
-  return transitions((styles) => (
+  return HeaderSlideInAnimation()((styles) => (
     <div>
       <div className="Header">
         <animated.img
