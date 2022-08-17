@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CharacterGenerator/static/css/main.f1cc42c3.css",
+    "main.css": "/CharacterGenerator/static/css/main.969e1b2c.css",
     "main.js": "/CharacterGenerator/static/js/main.9363995d.js",
     "index.html": "/CharacterGenerator/index.html",
-    "main.f1cc42c3.css.map": "/CharacterGenerator/static/css/main.f1cc42c3.css.map",
+    "main.969e1b2c.css.map": "/CharacterGenerator/static/css/main.969e1b2c.css.map",
     "main.9363995d.js.map": "/CharacterGenerator/static/js/main.9363995d.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1cc42c3.css",
+    "static/css/main.969e1b2c.css",
     "static/js/main.9363995d.js"
   ]
 }
