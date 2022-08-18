@@ -1,8 +1,13 @@
 .Carousel {
-  overflow: hidden;
+  position: inherit;
+
   display: flex;
   justify-content: center;
 
   width: 100%;
   height: 100%;
+}
+
+.Carousel::-webkit-scrollbar {
+  width: 0;
 }

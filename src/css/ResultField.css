@@ -1,0 +1,42 @@
+.ResultContentField {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-width: 240px;
+  min-height: 80px;
+  padding: 4px 12px;
+}
+
+.ResultContentFieldTitle {
+  cursor: pointer;
+
+  color: var(--font-main);
+  text-align: left;
+  letter-spacing: 1px;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.ResultContentFieldTitle:hover {
+  scale: 1.1;
+}
+
+.ResultContentFieldText {
+  position: relative;
+
+  padding: 6px 18px;
+
+  background-color: grey;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 720px) {
+  .ResultContentFieldText {
+    padding: 4px 8px;
+  }
+}

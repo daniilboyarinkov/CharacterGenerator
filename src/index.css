@@ -1,11 +1,14 @@
 :root {
   /* Light mode pallet */
   --background-main: #f4f4f4;
+  --background-reverse: #212121;
+  --background-reverse-shade: #000;
   --background-secondary: #d7d7d7;
   --background-popup: #adadad;
   --background-els: #efefef;
   --text-fields: #e3e3e3;
   --font-main: #212121;
+  --font-reverse: #fefefe;
   --font-popup: #fff;
   --popup-els: #d9d9d9;
   --active-els: #fff;
@@ -15,11 +18,14 @@
 [data-theme="dark"] {
   /* Dark mode pallet */
   --background-main: #212121;
+  --background-reverse: #efefef;
+  --background-reverse-shade: #fff;
   --background-secondary: #4a4a4a;
   --background-popup: #222;
   --background-els: #3e3e3e;
   --text-fields: #4f4f4f;
   --font-main: #efefef;
+  --font-reverse: #111;
   --font-popup: #fff;
   --popup-els: #4a4a4a;
   --active-els: #333;
@@ -30,6 +36,22 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1111;
+  border: none;
+  border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border: none;
+  border-radius: 20px;
 }
 
 body {

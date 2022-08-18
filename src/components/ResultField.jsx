@@ -1,35 +1,23 @@
-import { element, oneOfType, string } from "prop-types"
+import { element, oneOfType, string, func } from "prop-types"
 
-function ResultField({ text, result }) {
+import "../css/ResultField.css"
+
+function ResultField({ text, result, goToStepField }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: "4px 12px",
-        width: "100%",
-        minWidth: "240px",
-        minHeight: "80px",
-        alignItems: "center",
-      }}
-    >
+    <div className="ResultContentField">
       {text.length ? (
-        <b style={{ textAlign: "left" }}>{`${text}: `}</b>
+        <button
+          className="ResultContentFieldTitle"
+          type="button"
+          onClick={goToStepField}
+        >
+          <b>{`${text}: `}</b>
+        </button>
       ) : (
         <b> </b>
       )}
       {typeof result === "string" ? (
-        <span
-          style={{
-            backgroundColor: "grey",
-            padding: "6px 20px",
-            borderRadius: "6px",
-            position: "relative",
-          }}
-        >
-          {result}
-        </span>
+        <span className="ResultContentFieldText">{result}</span>
       ) : (
         <span>{result}</span>
       )}
@@ -40,6 +28,11 @@ function ResultField({ text, result }) {
 ResultField.propTypes = {
   text: string.isRequired,
   result: oneOfType([string, element]).isRequired,
+  goToStepField: func,
+}
+
+ResultField.defaultProps = {
+  goToStepField: Function.prototype,
 }
 
 export default ResultField

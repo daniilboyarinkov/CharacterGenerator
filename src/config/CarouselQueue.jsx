@@ -6,7 +6,14 @@ import StepForm from "../components/FormSteps/StepForm"
 
 const QueueLength = Slides().length - 1
 
-const CarouselQueue = (lang, nextPage, prevPage, resultPage) => {
+const CarouselQueue = (
+  lang,
+  nextPage,
+  prevPage,
+  resultPage,
+  firstPage,
+  goToStep
+) => {
   const slides = Slides(lang)
   return slides.map((slide) => {
     if (slide.type === "first")
@@ -20,7 +27,12 @@ const CarouselQueue = (lang, nextPage, prevPage, resultPage) => {
       )
     if (slide.type === "last")
       return (
-        <ResultForm title={slides[slide.id].title} returnAction={prevPage} />
+        <ResultForm
+          title={slides[slide.id].title}
+          returnAction={prevPage}
+          homeAction={firstPage}
+          goToStep={goToStep}
+        />
       )
     return (
       <StepForm
@@ -28,6 +40,8 @@ const CarouselQueue = (lang, nextPage, prevPage, resultPage) => {
         title={slides[slide.id].title}
         submitAction={nextPage}
         returnAction={prevPage}
+        homeAction={firstPage}
+        generateAll={resultPage}
       />
     )
   })

@@ -1,5 +1,5 @@
 .StepForm {
-  position: absolute;
+  position: inherit;
 
   width: 90vw;
   min-height: 80vh;
@@ -21,113 +21,6 @@ h2 {
 @media (max-width: 720px) {
   .StepForm {
     width: 98vw;
-    padding-bottom: 5rem;
-  }
-}
-
-.FormNav {
-  position: absolute;
-  bottom: 1%;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-}
-
-.FormNav > button {
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 1rem;
-
-  font-weight: bold;
-  color: var(--font-main);
-
-  background-color: var(--background-els);
-  border: 1px solid var(--background-main);
-  border-radius: 6px;
-  outline: none;
-}
-
-.GFormNav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.GFormNav > button {
-  width: 40%;
-  height: 60px;
-
-  font-size: 1.1rem;
-}
-
-@media screen and (max-width: 720px) {
-  .GFormNav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .GFormNav > button {
-    width: 80%;
-    height: 50px;
-
-    font-size: 1rem;
-  }
-
-  .GFormNav > button:first-child {
-    width: 60%;
-    margin-bottom: 6px;
-  }
-}
-
-.FormNav > .Submit {
-  width: 40%;
-  min-width: 350px;
-  height: 60px;
-  margin-left: 12px;
-
-  font-size: 1.1rem;
-}
-
-.FormNav > .Back {
-  width: 60px;
-  height: 60px;
-}
-
-.FormNav > button:focus {
-  border: 2px solid darkviolet;
-}
-
-.FormNav > button:hover {
-  background-color: var(--active-els);
-}
-
-.FormNav > button:active {
-  background-color: var(--background-main);
-}
-
-@media screen and (max-width: 720px) {
-  .FormNav > .Submit {
-    width: 50%;
-    min-width: 200px;
-    height: 50px;
-    margin-left: 6px;
-
-    font-size: 1rem;
-  }
-
-  .FormNav > .Back {
-    width: 50px;
-    height: 50px;
   }
 }
 
@@ -294,7 +187,7 @@ h2 {
 }
 
 .FormResultContent {
-  overflow: scroll;
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
   justify-content: center;
@@ -303,4 +196,14 @@ h2 {
   padding: 1rem;
 
   background-color: var(--background-secondary);
+}
+
+.FormResultContent > h2 {
+  text-align: left;
+}
+
+@media screen and (max-width: 720px) {
+  .FormResultContent > h2 {
+    text-align: center;
+  }
 }

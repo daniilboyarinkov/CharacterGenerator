@@ -30,11 +30,25 @@ function Carousel() {
     setStep(QueueLength)
   }, [])
 
+  const firstPage = useCallback(() => {
+    setForward(false)
+    setStep(0)
+  }, [])
+
+  const goToStep = useCallback((st) => {
+    setForward(false)
+    setStep(st)
+  }, [])
+
   const [renderItem, setRenderItem] = useState()
 
   useEffect(() => {
-    setRenderItem(CarouselQueue(lang, nextPage, prevPage, lastPage)[step])
-  }, [step, lang, nextPage, prevPage, lastPage])
+    setRenderItem(
+      CarouselQueue(lang, nextPage, prevPage, lastPage, firstPage, goToStep)[
+        step
+      ]
+    )
+  }, [step, lang, nextPage, prevPage, lastPage, firstPage, goToStep])
 
   const StepContextValue = useMemo(
     () => ({

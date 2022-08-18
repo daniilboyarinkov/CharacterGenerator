@@ -1,4 +1,3 @@
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded"
 import QuestionMarkRoundedIcon from "@mui/icons-material/QuestionMarkRounded"
 import ShuffleRoundedIcon from "@mui/icons-material/ShuffleRounded"
 import { bool, func, string, object } from "prop-types"
@@ -19,10 +18,18 @@ import useHover from "../../hooks/useHover"
 // import useKeyPress from "../../hooks/useKeyPress"
 import ColorCircle from "../ColorCircle"
 import ContactForm from "../ContactForm"
+import FormNav from "../FormNav"
 import Prompt from "../Prompt"
 import StepCircle from "../StepCircle"
 
-function StepForm({ step, title, submitAction, returnAction }) {
+function StepForm({
+  step,
+  title,
+  submitAction,
+  returnAction,
+  homeAction,
+  generateAll,
+}) {
   const [isContactShown, setContactShown] = useState(false)
   const ShowContact = useCallback(() => {
     setContactShown(true)
@@ -84,7 +91,13 @@ function StepForm({ step, title, submitAction, returnAction }) {
           shuffleRef={shuffleRef}
         />
       </div>
-      <FormNav returnAction={returnAction} submitAction={submitAction} />
+      <FormNav
+        type="step"
+        returnAction={returnAction}
+        homeAction={homeAction}
+        submitAction={submitAction}
+        endStep={generateAll}
+      />
       <StepCircle />
     </>
   )
@@ -139,20 +152,6 @@ const ResultField = memo(
   }
 )
 
-const FormNav = memo(({ returnAction, submitAction }) => {
-  const { lang } = useContext(LangContext)
-  return (
-    <div className="FormNav">
-      <button type="button" onClick={returnAction} className="Back">
-        <ArrowBackIosNewRoundedIcon />
-      </button>
-      <button type="button" onClick={submitAction} className="Submit">
-        {capitalize(LangElFactory(lang, "UI")("submit"))}
-      </button>
-    </div>
-  )
-})
-
 GenerationBtn.propTypes = {
   regenerate: func.isRequired,
   isShuffleHovering: bool.isRequired,
@@ -169,16 +168,13 @@ ResultField.propTypes = {
   questionRef: object.isRequired,
 }
 
-FormNav.propTypes = {
-  returnAction: func.isRequired,
-  submitAction: func.isRequired,
-}
-
 StepForm.propTypes = {
   step: string.isRequired,
   title: string.isRequired,
   submitAction: func.isRequired,
   returnAction: func.isRequired,
+  homeAction: func.isRequired,
+  generateAll: func.isRequired,
 }
 
 export default StepForm

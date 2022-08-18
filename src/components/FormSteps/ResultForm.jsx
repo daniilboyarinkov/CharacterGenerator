@@ -1,6 +1,5 @@
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded"
 import { func, string } from "prop-types"
-import { memo, useCallback, useContext, useRef } from "react"
+import { useCallback, useContext, useRef } from "react"
 
 import LangElFactory from "../../config/LangElFactory"
 import LangRFFactory from "../../config/LangRFFactory"
@@ -10,9 +9,10 @@ import exportAsImage from "../../helpers/ExportComponentAsImg"
 import capitalize from "../../helpers/StringCapitalize"
 // import useKeyPress from "../../hooks/useKeyPress"
 import ColorCircle from "../ColorCircle"
+import FormNav from "../FormNav"
 import ResultField from "../ResultField"
 
-function ResultForm({ title, returnAction }) {
+function ResultForm({ title, returnAction, homeAction, goToStep }) {
   // const [pressedKey, clearPressedKey] = useKeyPress()
   const { lang } = useContext(LangContext)
   const user = useContext(CharacterContext)
@@ -58,6 +58,7 @@ function ResultForm({ title, returnAction }) {
                   capitalize(LangRFFactory(lang, key, user[key]))
                 )
               }
+              goToStepField={() => goToStep(index)}
             />
           )
         })}
@@ -76,34 +77,20 @@ function ResultForm({ title, returnAction }) {
         />
       </div>
       <FormNav
-        lang={lang}
+        type="result"
         returnAction={returnAction}
+        homeAction={homeAction}
         saveAction={saveAction}
       />
     </>
   )
 }
 
-const FormNav = memo(({ lang, returnAction, saveAction }) => (
-  <div className="FormNav" style={{ position: "relative", marginTop: 24 }}>
-    <button type="button" onClick={returnAction} className="Back">
-      <ArrowBackIosNewRoundedIcon />
-    </button>
-    <button type="button" className="Submit" onClick={saveAction}>
-      {capitalize(LangElFactory(lang, "UI")("save"))}
-    </button>
-  </div>
-))
-
-FormNav.propTypes = {
-  lang: string.isRequired,
-  returnAction: func.isRequired,
-  saveAction: func.isRequired,
-}
-
 ResultForm.propTypes = {
   title: string.isRequired,
   returnAction: func.isRequired,
+  homeAction: func.isRequired,
+  goToStep: func.isRequired,
 }
 
 export default ResultForm

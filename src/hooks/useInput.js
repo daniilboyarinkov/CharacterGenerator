@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import useValidation from "./useValidation"
 
@@ -21,7 +21,16 @@ const useInput = (initialValue, validations) => {
 
   const onBlur = () => {
     setDirty(true)
+    if (validations.localStorage) {
+      if (!value.length) localStorage.removeItem(validations.localStorage)
+      else localStorage.setItem(validations.localStorage, value)
+    }
   }
+
+  useEffect(() => {
+    if (validations.localStorage)
+      setValue(localStorage.getItem(validations.localStorage))
+  }, [validations.localStorage])
 
   return { value, onChange, onBlur, isDirty, ...error }
 }

@@ -1,14 +1,11 @@
 import { func, string } from "prop-types"
-import { useContext, useEffect } from "react"
+import { useEffect } from "react"
 
-import LangElFactory from "../../config/LangElFactory"
-import LangContext from "../../contexts/LangContext"
-import capitalize from "../../helpers/StringCapitalize"
 import useKeyPress from "../../hooks/useKeyPress"
+import FormNav from "../FormNav"
 
 function GreetingForm({ title, content, submitAction, generateAll }) {
   const [pressedKey, clearPressedKey] = useKeyPress()
-  const { lang } = useContext(LangContext)
 
   useEffect(() => {
     if (pressedKey === " ") {
@@ -26,17 +23,11 @@ function GreetingForm({ title, content, submitAction, generateAll }) {
           <p key={`GreetingFormP-${index}`}>{text}</p>
         ))}
       </div>
-      <div
-        className="FormNav GFormNav"
-        style={{ position: "relative", marginTop: 24 }}
-      >
-        <button type="button" onClick={generateAll}>
-          {capitalize(LangElFactory(lang, "UI")("random"))}
-        </button>
-        <button type="button" onClick={submitAction}>
-          {capitalize(LangElFactory(lang, "UI")("custom"))}
-        </button>
-      </div>
+      <FormNav
+        type="greeting"
+        generateAll={generateAll}
+        submitAction={submitAction}
+      />
     </>
   )
 }

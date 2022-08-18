@@ -14,9 +14,17 @@ import "../css/ContactForm.css"
 import useInput from "../hooks/useInput"
 
 function ContactForm({ close, step }) {
-  const nameInput = useInput("", { required: true, minLength: 2 })
-  const emailInput = useInput("", { required: true, isEmail: true })
-  const suggestionInput = useInput("", { required: true, minLength: 10 })
+  const nameInput = useInput("", {
+    required: true,
+    minLength: 2,
+    localStorage: "user_name",
+  })
+  const emailInput = useInput("", {
+    required: true,
+    isEmail: true,
+    localStorage: "user_email",
+  })
+  const suggestionInput = useInput("", { required: true, minLength: 7 })
 
   const [showStatusPopup, setShowStatusPopup] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -85,73 +93,77 @@ function ContactForm({ close, step }) {
         </button>
         <h1>{capitalize(LangElFactory(lang, "CF")("title"))}</h1>
         <h4>{capitalize(LangElFactory(lang, "CF")("subtitle"))}</h4>
-        <label htmlFor="step">
-          <p>{capitalize(LangElFactory(lang, "CF")("step"))}:</p>
+        <div className="ContactPopupContent">
+          <label htmlFor="step">
+            <p>{capitalize(LangElFactory(lang, "CF")("step"))}:</p>
+            <input
+              type="text"
+              id="step"
+              name="step"
+              readOnly
+              value={LangElFactory(lang, "ResultContentKeys")(step)}
+            />
+          </label>
+          <div className="Row">
+            <label htmlFor="name">
+              {nameInput.isDirty && nameInput.error && (
+                <p style={{ color: "red" }}>* {nameInput.errorText}</p>
+              )}
+              <p>{capitalize(LangElFactory(lang, "CF")("name"))}:</p>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder={LangElFactory(lang, "CF")("namePlaceHolder")}
+                value={nameInput.value}
+                onChange={nameInput.onChange}
+                onBlur={nameInput.onBlur}
+              />
+            </label>
+            <label htmlFor="email">
+              {emailInput.isDirty && emailInput.error && (
+                <p style={{ color: "red" }}>* {emailInput.errorText}</p>
+              )}
+              <p>{capitalize(LangElFactory(lang, "CF")("email"))}:</p>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder={LangElFactory(lang, "CF")("emailPlaceHolder")}
+                value={emailInput.value}
+                onChange={emailInput.onChange}
+                onBlur={emailInput.onBlur}
+              />
+            </label>
+          </div>
+          <p className="ContactNote">
+            * {capitalize(LangElFactory(lang, "CF")("note"))}
+          </p>
+          <label htmlFor="suggestion">
+            {suggestionInput.isDirty && suggestionInput.error && (
+              <p style={{ color: "red" }}>* {suggestionInput.errorText}</p>
+            )}
+            <p>{capitalize(LangElFactory(lang, "CF")("suggestion"))}:</p>
+            <textarea
+              name="suggestion"
+              id="suggestion"
+              cols="30"
+              rows="3"
+              placeholder={capitalize(
+                LangElFactory(lang, "CF")("suggestionPlaceHolder")
+              )}
+              value={suggestionInput.value}
+              onChange={suggestionInput.onChange}
+              onBlur={suggestionInput.onBlur}
+            />
+          </label>
+          <br />
           <input
-            type="text"
-            id="step"
-            name="step"
-            readOnly
-            value={LangElFactory(lang, "ResultContentKeys")(step)}
+            type="submit"
+            disabled={!isFormValid}
+            value={capitalize(LangElFactory(lang, "CF")("btnText"))}
           />
-        </label>
-        <div className="Row">
-          <label htmlFor="name">
-            {nameInput.isDirty && nameInput.error && (
-              <p style={{ color: "red" }}>* {nameInput.errorText}</p>
-            )}
-            <p>{capitalize(LangElFactory(lang, "CF")("name"))}:</p>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder={LangElFactory(lang, "CF")("namePlaceHolder")}
-              value={nameInput.value}
-              onChange={nameInput.onChange}
-              onBlur={nameInput.onBlur}
-            />
-          </label>
-          <label htmlFor="email">
-            {emailInput.isDirty && emailInput.error && (
-              <p style={{ color: "red" }}>* {emailInput.errorText}</p>
-            )}
-            <p>{capitalize(LangElFactory(lang, "CF")("email"))}:</p>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder={LangElFactory(lang, "CF")("emailPlaceHolder")}
-              value={emailInput.value}
-              onChange={emailInput.onChange}
-              onBlur={emailInput.onBlur}
-            />
-          </label>
         </div>
-        <p className="ContactNote">
-          * {capitalize(LangElFactory(lang, "CF")("note"))}
-        </p>
-        <label htmlFor="suggestion">
-          {suggestionInput.isDirty && suggestionInput.error && (
-            <p style={{ color: "red" }}>* {suggestionInput.errorText}</p>
-          )}
-          <p>{capitalize(LangElFactory(lang, "CF")("suggestion"))}:</p>
-          <textarea
-            name="suggestion"
-            id="suggestion"
-            cols="30"
-            rows="3"
-            placeholder={capitalize(
-              LangElFactory(lang, "CF")("suggestionPlaceHolder")
-            )}
-            value={suggestionInput.value}
-            onChange={suggestionInput.onChange}
-            onBlur={suggestionInput.onBlur}
-          />
-        </label>
-        <br />
-        <button type="submit" disabled={!isFormValid}>
-          {capitalize(LangElFactory(lang, "CF")("btnText"))}
-        </button>
       </animated.form>
     </>
   ))

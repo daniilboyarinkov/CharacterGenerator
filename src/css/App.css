@@ -1,8 +1,7 @@
 .App {
-  position: fixed;
+  position: absolute;
 
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: scroll;
 
   width: 100vw;
   min-height: 100vh;

@@ -24,9 +24,8 @@
 
 @media screen and (max-width: 720px) {
   .StepCircle {
-    top: 72.5%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 87.5%;
+    left: 0;
 
     width: 60px;
     height: 60px;

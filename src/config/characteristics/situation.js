@@ -11,4 +11,5 @@ export default [
   "sea",
   "New York",
   "big city",
+  "graveyard",
 ]
