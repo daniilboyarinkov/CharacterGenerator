@@ -14,9 +14,9 @@
   margin: 10px;
 
   font-weight: bold;
-  color: var(--font-main);
+  color: var(--text2);
 
-  background-color: var(--active-els);
+  background-color: transparent;
   border-radius: 50%;
 
   -moz-window-dragging: none;

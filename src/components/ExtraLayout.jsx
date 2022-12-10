@@ -1,4 +1,4 @@
-import { useContext, memo, useState } from "react"
+import { memo, useState } from "react"
 import {
   useSpring,
   useTransition,
@@ -8,18 +8,14 @@ import {
   config,
 } from "react-spring"
 
-import LangTogglePopup from "./UI/LangTogglePopup"
-import ThemeToggleButton from "./UI/ThemeToggleButton"
+import LangTogglePopup from "./LangTogglePopup"
+import ThemeToggleButton from "./ThemeToggleButton"
 
-import LangContext from "../contexts/LangContext"
-import ThemeContext from "../contexts/ThemeContext"
 import useDevice from "../hooks/useDevice"
 
 import "../css/ExtraLayout.css"
 
 function ExtraLayout() {
-  const { theme, setTheme } = useContext(ThemeContext)
-  const { lang, setLang } = useContext(LangContext)
   const [langsOpen, setLangsOpen] = useState(false)
   const { isMobile } = useDevice()
 
@@ -58,13 +54,11 @@ function ExtraLayout() {
       className={`ExtraLayout ExtraLayout-${isMobile ? "mobile" : "desktop"}`}
     >
       <LangTogglePopup
-        lang={lang}
-        setLang={setLang}
         setOpen={setLangsOpen}
         langsTransition={langsTransition}
         orientation={isMobile ? "vertical" : "horizontal"}
       />
-      <ThemeToggleButton theme={theme} setTheme={setTheme} />
+      <ThemeToggleButton />
     </animated.div>
   )
 }

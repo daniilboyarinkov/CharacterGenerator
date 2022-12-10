@@ -1,22 +1,17 @@
 .FormNav {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
   display: flex;
   flex-direction: row;
 
+  margin-top: 1em;
+  margin-bottom: 2em;
+
   width: 100%;
-  margin-bottom: 12px;
 }
 
 .FormNav-greeting {
   position: relative;
 
   justify-content: space-around;
-
-  margin-top: 12px;
 }
 
 .FormNav-step {
@@ -30,14 +25,6 @@
   justify-content: center;
 }
 
-.FormNav-step > .Home {
-  margin-left: 1rem;
-}
-
-.FormNav-step > .End {
-  margin-right: 1rem;
-}
-
 .FormNav-step > .Home,
 .FormNav-step > .End {
   display: flex;
@@ -45,16 +32,12 @@
   justify-content: center;
 
   width: 100px;
-  height: 55px;
 }
 
 .FormNav-result {
   position: relative;
 
   justify-content: space-between;
-
-  margin-top: 24px;
-  margin-bottom: 6px;
 }
 
 .FormNav-result > div {
@@ -64,18 +47,17 @@
 }
 
 .FormNav button {
-  cursor: pointer;
-
   padding: 1rem;
+  height: 55px;
 
   font-size: 1.1rem;
   font-weight: bold;
-  color: var(--font-main);
 
-  background-color: var(--background-els);
-  border: 1px solid var(--background-main);
+  background-color: var(--surface3);
   border-radius: 6px;
-  outline: none;
+
+  box-shadow: var(--shadow);
+
 }
 
 .FormNav-greeting button {
@@ -83,25 +65,19 @@
 }
 
 .FormNav .ReversedBtn {
-  color: var(--font-reverse);
+  color: var(--text2);
+  background-color: transparent;
+  border-width: 1px;
+  border-color: var(--text2);
+}
 
-  background-color: var(--background-reverse);
+.FormNav .ReversedBtn:focus,
+.FormNav .ReversedBtn:active {
+  border: 2px solid var(--brand);
 }
 
 .FormNav .ReversedBtn:hover {
-  background-color: var(--background-reverse-shade);
-}
-
-.FormNav button:focus {
-  border-color: darkviolet;
-}
-
-.FormNav button:hover {
-  background-color: var(--active-els);
-}
-
-.FormNav button:active {
-  background-color: var(--background-main);
+  border: 2px solid var(--text1);
 }
 
 @media screen and (max-width: 720px) {
@@ -116,24 +92,20 @@
     flex-direction: column;
     justify-content: center;
 
-    margin-top: 50px;
+    margin-top: 2em;
   }
 
   .FormNav-step > .Home {
     align-self: start;
-
-    margin: 0;
   }
 
-  .FormNav-step > .End {
+  .FormNav > .End {
     align-self: end;
-
-    margin: 0;
   }
 
-  .FormNav-step > div {
+  .FormNav > div {
     width: 100%;
-    margin: 12px 0;
+    margin: 1rem 0;
   }
 
   .FormNav-result {
@@ -141,17 +113,12 @@
     justify-content: center;
   }
 
-  .FormNav-result > div {
-    width: 100%;
-    margin-top: 24px;
-  }
-
   .FormNav-greeting > button {
-    width: 98%;
+    width: 100%;
   }
 
-  .FormNav-greeting > button:first-child {
-    margin-bottom: 24px;
+  .FormNav > button + button {
+    margin-top: 1.5em;
   }
 }
 
@@ -181,22 +148,30 @@
   .FormNav .Submit {
     width: 100%;
     min-width: 120px;
-    height: 50px;
+    height: 70px;
     margin-left: 6px;
 
     font-size: 1rem;
   }
 
   .FormNav .Back {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
   }
 
   .FormNav > .Home {
     width: 40%;
+    min-width: 80px;
+    max-width: 150px;
+    height: 60px;
+
   }
 
   .FormNav > .End {
     width: 40%;
+    min-width: 80px;
+    max-width: 150px;
+    height: 60px;
+
   }
 }

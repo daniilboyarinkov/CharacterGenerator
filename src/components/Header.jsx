@@ -1,18 +1,18 @@
-import { useContext, memo } from "react"
+import { memo } from "react"
 import { animated } from "react-spring"
 
 import ExtraLayout from "./ExtraLayout"
 
 import HeaderSlideInAnimation from "../animations/HeaderSlideIn.animation"
 import LangElFactory from "../config/LangElFactory"
-import LangContext from "../contexts/LangContext"
 
 import useDevice from "../hooks/useDevice"
 
 import "../css/Header.css"
+import useLang from "../hooks/useLang"
 
 function Header() {
-  const { lang } = useContext(LangContext)
+  const [lang] = useLang()
   const { isMobile } = useDevice()
 
   return HeaderSlideInAnimation()((styles) => (
@@ -30,7 +30,13 @@ function Header() {
         </animated.h1>
         <ExtraLayout />
       </div>
-      <animated.hr style={styles} className="HeaderHr" />
+      <animated.hr
+        style={{
+          ...styles,
+          borderBottomColor: "var(--text2)",
+        }}
+        className="HeaderHr"
+      />
     </div>
   ))
 }

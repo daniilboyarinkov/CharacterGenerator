@@ -1,11 +1,9 @@
-import { useContext } from "react"
-
-import StepContext from "../contexts/StepContext"
+import { useSelector } from "react-redux"
 
 import "../css/StepCircle.css"
 
 function StepCircle() {
-  const { current, all } = useContext(StepContext)
+  const { current, all } = useSelector((state) => state.step)
   return <div className="StepCircle">{`${current}/${all}`}</div>
 }
 

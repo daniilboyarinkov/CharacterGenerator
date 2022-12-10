@@ -1,20 +1,19 @@
 import { object, string } from "prop-types"
-import { useContext, useRef } from "react"
+import { useRef } from "react"
 import { animated } from "react-spring"
 
 import Prompt from "./Prompt"
 
 import LangRFFactory from "../config/LangRFFactory"
-import LangContext from "../contexts/LangContext"
 import ColorToHex from "../converters/ColoursToHex.json"
 import capitalize from "../helpers/StringCapitalize"
-
 import useHover from "../hooks/useHover"
+import useLang from "../hooks/useLang"
 
 function ColorCircle({ color, styles, promptStyles, wrapPosition }) {
   const circleRef = useRef()
   const isHovering = useHover(circleRef)
-  const { lang } = useContext(LangContext)
+  const [lang] = useLang()
 
   return (
     <div

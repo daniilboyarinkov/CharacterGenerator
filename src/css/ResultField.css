@@ -13,12 +13,14 @@
 .ResultContentFieldTitle {
   cursor: pointer;
 
-  color: var(--font-main);
+  color: var(--text1);
   text-align: left;
   letter-spacing: 1px;
 
   background-color: transparent;
-  border: none;
+  border: 2px solid transparent;
+  border-radius: 0.625em;
+  padding: 0.3em 0.4em;
   outline: none;
 }
 
@@ -31,8 +33,9 @@
 
   padding: 6px 18px;
 
-  background-color: grey;
-  border-radius: 6px;
+  background-color: var(--surface4);
+  color: var(--text2);
+  border-radius: 0.6em;
 }
 
 @media screen and (max-width: 720px) {

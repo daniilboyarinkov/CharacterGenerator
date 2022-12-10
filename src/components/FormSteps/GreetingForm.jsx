@@ -1,11 +1,23 @@
-import { func, string } from "prop-types"
-import { useEffect } from "react"
+import { string } from "prop-types"
+import { useCallback, useEffect } from "react"
+import { useDispatch } from "react-redux"
+
+import { lastPage, nextPage } from "../../app/step/stepSlice"
 
 import useKeyPress from "../../hooks/useKeyPress"
 import FormNav from "../FormNav"
 
-function GreetingForm({ title, content, submitAction, generateAll }) {
+function GreetingForm({ title, content }) {
   const [pressedKey, clearPressedKey] = useKeyPress()
+  const dispatch = useDispatch()
+
+  const generateAll = useCallback(() => {
+    dispatch(lastPage())
+  }, [dispatch])
+
+  const submitAction = useCallback(() => {
+    dispatch(nextPage())
+  }, [dispatch])
 
   useEffect(() => {
     if (pressedKey === " ") {
@@ -35,8 +47,6 @@ function GreetingForm({ title, content, submitAction, generateAll }) {
 GreetingForm.propTypes = {
   title: string.isRequired,
   content: string.isRequired,
-  submitAction: func.isRequired,
-  generateAll: func.isRequired,
 }
 
 export default GreetingForm

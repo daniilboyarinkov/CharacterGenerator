@@ -4,6 +4,7 @@
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
+  max-width: 98vw;
 
   display: flex;
   flex-direction: column;
@@ -13,32 +14,43 @@
   min-width: fit-content;
   padding: 1rem 3rem 2rem;
 
-  color: var(--font-main);
+  color: var(--text2);
 
-  background-color: var(--background-popup);
+  background-color: var(--surface4);
   border-radius: 24px;
+
+  transition: background-color 0.2s ease-in-out;
 }
 
 .ContactForm > h4 {
+  color: var(--text2);
+  font-size: 0.8rem;
   margin-bottom: 24px;
+}
+.ContactForm > h1 {
+  color: var(--text1);
 }
 
 .ContactForm input[type="text"] {
   width: 100%;
-  margin: 4px;
-  padding: 6px;
+  margin: 0.2em;
+  padding: 0.4em;
 
-  border: 2px solid var(--background-popup);
-  border-radius: 6px;
+  border: 2px solid transparent;
+  border-radius: 0.8em;
   outline: none;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .ContactForm input[id="name"] {
   margin-left: 0;
 }
 
-.ContactForm input[type="text"]:focus {
-  border: 2px solid darkviolet;
+.ContactForm input[type="text"]:focus,
+.ContactForm input[type="text"]:active,
+.ContactForm input[type="submit"]:focus,
+.ContactForm input[type="submit"]:active {
+  border: 2px solid var(--brand);
 }
 
 .ContactForm input[id="step"] {
@@ -47,27 +59,28 @@
   width: 100%;
 
   font-weight: bold;
-  color: white;
   text-align: center;
 
-  background-color: gray;
+  background-color: var(--surface4);
 }
 
 .ContactForm textarea {
   width: 100%;
-  padding: 6px;
+  padding: 0.6em;
 
-  border: 2px solid var(--background-popup);
-  border-radius: 6px;
+  border: 2px solid transparent;
+  border-radius: 0.8em;
   outline: none;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.ContactForm textarea:focus {
-  border: 2px solid darkviolet;
+.ContactForm textarea:focus,
+.ContactForm textarea:active {
+  border: 2px solid var(--brand);
 }
 
 .ContactNote {
-  margin-bottom: 12px;
+  margin-bottom: 1em;
 
   font-size: small;
   font-weight: 300;
@@ -75,53 +88,52 @@
   opacity: 0.3;
 }
 
+.ContactForm label {
+  width: 100%;
+}
+
 .ContactForm input[type="submit"] {
   cursor: pointer;
 
   width: 100%;
-  margin-top: 24px;
-  padding: 8px 12px;
+  margin-top: 1.8em;
+  padding: 0.5em 0.8em;
 
   font-weight: bold;
-  color: var(--font-main);
 
-  background-color: var(--popup-els);
-  border: 2px solid var(--background-popup);
-  border-radius: 6px;
+  background-color: var(--surface2);
+  border: 2px solid transparent;
+  border-radius: 0.6em;
   outline: none;
 }
 
 .ContactForm input[type="submit"]:disabled {
   cursor: auto;
 
-  color: lightgray;
+  color: var(--text1);
 
-  background-color: gray;
+  background-color: var(--suface4);
 }
 
 .ContactForm input[type="submit"]:focus {
-  border: 2px solid darkviolet;
+  border: 2px solid var(--brand);
 }
 
 .ContactCross {
-  cursor: pointer;
-
   position: absolute;
   top: 0;
   right: 0;
+  width: 60px;
+  height: 60px;
 
-  margin: 6px;
-  padding: 6px;
+  margin: 0.6em;
+  padding: 0.6em;
 
   background-color: transparent;
-  border: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
   outline: none;
 }
-
-/* .ContactPopupContent {
-  width: 100%;
-  max-width: 300px;
-} */
 
 .Shadow {
   position: fixed;
@@ -137,6 +149,7 @@
 }
 
 .Row {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;

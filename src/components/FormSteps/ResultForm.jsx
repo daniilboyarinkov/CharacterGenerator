@@ -1,27 +1,43 @@
-import { func, string } from "prop-types"
-import { useCallback, useContext, useRef } from "react"
+import { string } from "prop-types"
+import { useCallback, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
+import { firstPage, goToStep, prevPage } from "../../app/step/stepSlice"
 
 import LangElFactory from "../../config/LangElFactory"
 import LangRFFactory from "../../config/LangRFFactory"
-import CharacterContext from "../../contexts/CharacterContext"
-import LangContext from "../../contexts/LangContext"
 import exportAsImage from "../../helpers/ExportComponentAsImg"
 import capitalize from "../../helpers/StringCapitalize"
+import useLang from "../../hooks/useLang"
 // import useKeyPress from "../../hooks/useKeyPress"
 import ColorCircle from "../ColorCircle"
 import FormNav from "../FormNav"
 import ResultField from "../ResultField"
 
-function ResultForm({ title, returnAction, homeAction, goToStep }) {
+function ResultForm({ title }) {
+  const dispatch = useDispatch()
   // const [pressedKey, clearPressedKey] = useKeyPress()
-  const { lang } = useContext(LangContext)
-  const user = useContext(CharacterContext)
+  const [lang] = useLang()
+  const user = useSelector((state) => state.character)
 
   const exportRef = useRef()
 
   const saveAction = useCallback(() => {
     exportAsImage(exportRef.current, "Character.png")
   }, [exportRef])
+
+  const returnAction = useCallback(() => {
+    dispatch(prevPage())
+  }, [dispatch])
+  const homeAction = useCallback(() => {
+    dispatch(firstPage())
+  }, [dispatch])
+  const goTo = useCallback(
+    (st) => {
+      dispatch(goToStep(st))
+    },
+    [dispatch]
+  )
 
   // useEffect(() => {
   //   if (pressedKey === " ") {
@@ -58,7 +74,7 @@ function ResultForm({ title, returnAction, homeAction, goToStep }) {
                   capitalize(LangRFFactory(lang, key, user[key]))
                 )
               }
-              goToStepField={() => goToStep(index)}
+              goToStepField={() => goTo(index + 1)}
             />
           )
         })}
@@ -88,9 +104,6 @@ function ResultForm({ title, returnAction, homeAction, goToStep }) {
 
 ResultForm.propTypes = {
   title: string.isRequired,
-  returnAction: func.isRequired,
-  homeAction: func.isRequired,
-  goToStep: func.isRequired,
 }
 
 export default ResultForm

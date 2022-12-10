@@ -6,10 +6,13 @@
 
   display: flex;
 
-  background-color: var(--active-els);
-  border-radius: 12px;
+  background-color: var(--surface2);
+  opacity: 0.8;
+  backdrop-filter: blur(21px);
+  border-radius: 0.8em;
 
   transition: all 0.5s ease;
+  box-shadow: var(--shadow);
 }
 
 .ExtraLayout-desktop {
@@ -30,7 +33,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: var(--background-secondary);
+  /* background-color: var(--surface3); */
   border-radius: 12px;
 }
 
@@ -42,16 +45,10 @@
   flex-direction: row;
 }
 
-.ExtraLayout > button {
-  cursor: pointer;
-
+.ExtraLayout button {
   margin: 6px;
   padding: 4px;
-
-  background-color: var(--background-secondary);
-  border: 2px solid var(--background-secondary);
-  border-radius: 4px;
-  outline: none;
+  border-radius: 0.4em;
 }
 
 .ExtraLayout-mobile > button {
@@ -59,34 +56,11 @@
 }
 
 .ExtraLayout .active {
-  border: 2px solid var(--font-main);
+  border: 2px solid var(--brand);
 
   scale: 1.1;
 }
 
 .ChooseLangPopup > button {
-  cursor: pointer;
-
-  margin: 6px;
-  padding: 6px;
-
-  font-weight: bold;
-  color: var(--font-main);
-
-  background-color: var(--background-main);
-  border: 2px solid var(--background-main);
-  border-radius: 4px;
-  outline: none;
-}
-
-.ChooseLangPopup > button:focus {
-  border: 2px solid darkviolet;
-}
-
-.ExtraLayout > button:focus {
-  border: 2px solid darkviolet;
-}
-
-.ChooseLangPopup > button:hover {
-  border: 2px solid var(--active-els);
+  min-width: 2em;
 }

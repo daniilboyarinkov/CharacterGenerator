@@ -11,7 +11,9 @@
   margin: 0 10%;
 
   border: none;
-  border-bottom: 2px solid #121212;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  opacity: 0.2;
 }
 
 .Header > h1 {
