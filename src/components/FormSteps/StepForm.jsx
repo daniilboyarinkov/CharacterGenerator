@@ -1,20 +1,27 @@
 import QuestionMarkRoundedIcon from "@mui/icons-material/QuestionMarkRounded"
 import ShuffleRoundedIcon from "@mui/icons-material/ShuffleRounded"
 import { bool, func, string, object } from "prop-types"
-import { useCallback, useContext, useRef, useState, memo } from "react"
+import { useCallback, useRef, useState, memo, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { animated } from "react-spring"
 
 import FadeSlideAnimation from "../../animations/FadeSlide.animation"
 
+import { generate } from "../../app/character/characterSlice"
+import {
+  firstPage,
+  lastPage,
+  nextPage,
+  prevPage,
+} from "../../app/step/stepSlice"
+
 import LangElFactory from "../../config/LangElFactory"
 import LangRFFactory from "../../config/LangRFFactory"
-import CharacterContext from "../../contexts/CharacterContext"
-
-import LangContext from "../../contexts/LangContext"
 
 import "../../css/Forms.css"
 import capitalize from "../../helpers/StringCapitalize"
 import useHover from "../../hooks/useHover"
+import useLang from "../../hooks/useLang"
 // import useKeyPress from "../../hooks/useKeyPress"
 import ColorCircle from "../ColorCircle"
 import ContactForm from "../ContactForm"
@@ -22,14 +29,7 @@ import FormNav from "../FormNav"
 import Prompt from "../Prompt"
 import StepCircle from "../StepCircle"
 
-function StepForm({
-  step,
-  title,
-  submitAction,
-  returnAction,
-  homeAction,
-  generateAll,
-}) {
+function StepForm({ step, title }) {
   const [isContactShown, setContactShown] = useState(false)
   const ShowContact = useCallback(() => {
     setContactShown(true)
@@ -39,8 +39,10 @@ function StepForm({
   }, [])
 
   // const [pressedKey, clearPressedKey] = useKeyPress()
+  const dispatch = useDispatch()
 
-  const user = useContext(CharacterContext)
+  // const user = useContext(CharacterContext)
+  const user = useSelector((state) => state.character)
   const [viewStep, setViewStep] = useState(user[step])
 
   const shuffleRef = useRef()
@@ -50,15 +52,25 @@ function StepForm({
   const isQuestionHovering = useHover(questionRef)
 
   const regenerate = useCallback(() => {
-    const curr = user[step]
-    const pr = user.generate(step)
-    if (pr !== curr) {
-      user[step] = pr
-      setViewStep(user[step])
-    } else {
-      regenerate()
-    }
-  }, [user, step])
+    dispatch(generate(step))
+  }, [step, dispatch])
+
+  useEffect(() => {
+    setViewStep(user[step])
+  }, [step, user])
+
+  const returnAction = useCallback(() => {
+    dispatch(prevPage())
+  }, [dispatch])
+  const homeAction = useCallback(() => {
+    dispatch(firstPage())
+  }, [dispatch])
+  const submitAction = useCallback(() => {
+    dispatch(nextPage())
+  }, [dispatch])
+  const generateAll = useCallback(() => {
+    dispatch(lastPage())
+  }, [dispatch])
 
   // useEffect(() => {
   //   if (pressedKey === " ") {
@@ -104,7 +116,7 @@ function StepForm({
 }
 
 const GenerationBtn = memo(({ regenerate, isShuffleHovering, shuffleRef }) => {
-  const { lang } = useContext(LangContext)
+  const [lang] = useLang()
   return (
     <button type="button" className="GenerateBtn" onClick={regenerate}>
       {capitalize(LangElFactory(lang, "UI")("generate"))}
@@ -122,7 +134,7 @@ const GenerationBtn = memo(({ regenerate, isShuffleHovering, shuffleRef }) => {
 
 const ResultField = memo(
   ({ step, viewStep, isQuestionHovering, questionRef, ShowContact }) => {
-    const { lang } = useContext(LangContext)
+    const [lang] = useLang()
     return (
       <div className="ResultField">
         {FadeSlideAnimation(viewStep)((styles, item) =>
@@ -171,10 +183,6 @@ ResultField.propTypes = {
 StepForm.propTypes = {
   step: string.isRequired,
   title: string.isRequired,
-  submitAction: func.isRequired,
-  returnAction: func.isRequired,
-  homeAction: func.isRequired,
-  generateAll: func.isRequired,
 }
 
 export default StepForm

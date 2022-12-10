@@ -3,17 +3,16 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import CoPresentRoundedIcon from "@mui/icons-material/CoPresentRounded"
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded"
 import { string } from "prop-types"
-import { useContext } from "react"
 
 import LangElFactory from "../config/LangElFactory"
-import LangContext from "../contexts/LangContext"
 
 import "../css/FormNav.css"
 import capitalize from "../helpers/StringCapitalize"
+import useLang from "../hooks/useLang"
 
 // type: greeting, step, result
 function FormNav({ type, ...args }) {
-  const { lang } = useContext(LangContext)
+  const [lang] = useLang()
 
   if (type !== "greeting" && type !== "step" && type !== "result")
     return <div className="Empty" />

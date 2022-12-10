@@ -49,7 +49,6 @@ const fieldToArr = {
 }
 
 const Character = {
-  id: 0,
   sex: getOneRandom(sexArr),
   race: getOneRandom(raceArr),
   skinColor: getOneRandom(colorsArr),

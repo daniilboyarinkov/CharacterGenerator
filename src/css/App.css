@@ -1,15 +1,9 @@
 .App {
-  position: absolute;
-
-  overflow-y: scroll;
-
   width: 100vw;
   min-height: 100vh;
 
-  color: var(--font-main);
+  color: var(--text1);
   text-align: center;
-
-  background-color: var(--background-main);
 
   transition: color 0.5s ease, background-color 0.5s ease;
 }
