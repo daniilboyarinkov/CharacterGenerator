@@ -56,34 +56,34 @@
 
 # Дизайн
 
-![pc1](./../for_readme/1-1.jpg)
+![pc1](./for_readme/1-1.jpg)
 
 Ручная настройка персонажа.  
 Для любителей потыкать
 
-![pc2](./../for_readme/2-1.jpg)
+![pc2](./for_readme/2-1.jpg)
 
 Готово!
 
-![pc3](./../for_readme/3-1.jpg)
+![pc3](./for_readme/3-1.jpg)
 
 Есть идеи или предложения?  
 Пиши!
 
-![pc4](./../for_readme/4.jpg)
+![pc4](./for_readme/4.jpg)
 
 # А теперь то же самое только белое
 
-![pc1](./../for_readme/1-2.jpg)
+![pc1](./for_readme/1-2.jpg)
 
 Ручная настройка персонажа.  
 Для любителей потыкать
 
-![pc2](./../for_readme/2-2.jpg)
+![pc2](./for_readme/2-2.jpg)
 
 Готово!
 
-![pc3](./../for_readme/3-2.jpg)
+![pc3](./for_readme/3-2.jpg)
 
 # А что было до этого
 
