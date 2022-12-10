@@ -3,14 +3,14 @@
   z-index: 1;
   top: -15%;
 
-  padding: 16px 26px;
+  padding: 1em 2em;
 
   font-weight: bold;
   color: var(--font-main);
   text-align: center;
 
-  background-color: var(--background-main);
-  border-radius: 4px;
+  background-color: var(--surface1);
+  border-radius: 0.6em;
 }
 
 .Prompt::before {
@@ -22,5 +22,5 @@
   transform: translateX(-50%);
 
   border: 10px solid transparent;
-  border-top: 10px solid var(--background-main);
+  border-top: 10px solid var(--surface1);
 }

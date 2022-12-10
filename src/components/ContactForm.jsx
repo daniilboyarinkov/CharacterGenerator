@@ -1,17 +1,17 @@
 import emailjs from "@emailjs/browser"
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded"
 import { func, string } from "prop-types"
-import { useContext, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { animated } from "react-spring"
 
 import StatusPopup from "./StatusPopup"
 
 import FadeAnimation from "../animations/Fade.animation"
 import LangElFactory from "../config/LangElFactory"
-import LangContext from "../contexts/LangContext"
 import capitalize from "../helpers/StringCapitalize"
 import "../css/ContactForm.css"
 import useInput from "../hooks/useInput"
+import useLang from "../hooks/useLang"
 
 function ContactForm({ close, step }) {
   const nameInput = useInput("", {
@@ -30,7 +30,7 @@ function ContactForm({ close, step }) {
   const [success, setSuccess] = useState(false)
   const [isFormValid, setFormValid] = useState(false)
 
-  const { lang } = useContext(LangContext)
+  const [lang] = useLang()
 
   const formRef = useRef()
 
@@ -54,11 +54,7 @@ function ContactForm({ close, step }) {
 
       setShowStatusPopup(true)
 
-      if (result.status === 200 && result.text === "OK") {
-        setSuccess(true)
-      } else {
-        setSuccess(false)
-      }
+      setSuccess(result.status === 200 && result.text === "OK")
     } catch (err) {
       setSuccess(false)
     }

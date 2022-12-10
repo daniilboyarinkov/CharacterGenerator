@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux"
 import { useTransition, config } from "react-spring"
 
-const StepSlideAnimation = (renderItem, forward) =>
-  useTransition(renderItem, {
+const StepSlideAnimation = (renderItem) => {
+  const forward = useSelector((state) => state.step.forwards)
+
+  return useTransition(renderItem, {
     config: { duration: 400, ...config.gentle },
     from: {
       x: forward ? "120%" : "-120%",
@@ -13,5 +16,6 @@ const StepSlideAnimation = (renderItem, forward) =>
       transform: "translate3d(0, -60px, 0)",
     },
   })
+}
 
 export default StepSlideAnimation
