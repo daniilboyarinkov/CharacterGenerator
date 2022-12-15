@@ -56,44 +56,64 @@
 
 # Дизайн
 
-![pc1](./for_readme/1-1.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/1-1.jpg" />
+</a>
 
 Ручная настройка персонажа.  
 Для любителей потыкать
 
-![pc2](./for_readme/2-1.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/2-1.jpg" />
+</a>
 
 Готово!
 
-![pc3](./for_readme/3-1.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/3-1.jpg" />
+</a>
 
 Есть идеи или предложения?  
 Пиши!
 
-![pc4](./for_readme/4.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/4.jpg" />
+</a>
 
 # А теперь то же самое только белое
 
-![pc1](./for_readme/1-2.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/1-2.jpg" />
+</a>
 
 Ручная настройка персонажа.  
 Для любителей потыкать
 
-![pc2](./for_readme/2-2.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/2-2.jpg" />
+</a>
 
 Готово!
 
-![pc3](./for_readme/3-2.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="./for_readme/3-2.jpg" />
+</a>
 
 # А что было до этого
 
 А я вам покажу. 
 
-![pc3](https://user-images.githubusercontent.com/89917619/185416538-1c4b9466-7461-46fd-aed5-27c10507a551.jpg)
+<a htrf="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="https://user-images.githubusercontent.com/89917619/185416538-1c4b9466-7461-46fd-aed5-27c10507a551.jpg" />
+</a>
 
-![pc3](https://user-images.githubusercontent.com/89917619/185416637-599d256a-2978-4c8e-8b1c-3c81e5ef4e52.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="https://user-images.githubusercontent.com/89917619/185416637-599d256a-2978-4c8e-8b1c-3c81e5ef4e52.jpg" />
+</a>
 
-![pc3](https://user-images.githubusercontent.com/89917619/185416710-770fe860-e7b4-4905-9895-335a037c229f.jpg)
+<a href="https://daniilboyarinkov.github.io/CharacterGenerator/">
+<img alt="preview" src="https://user-images.githubusercontent.com/89917619/185416710-770fe860-e7b4-4905-9895-335a037c229f.jpg" />
+</a>
 
 Вот так оно и было.
 
